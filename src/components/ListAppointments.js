@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import App from './App';
 import Appointment from './Appointment';
 
 class ListAppointments extends Component {
