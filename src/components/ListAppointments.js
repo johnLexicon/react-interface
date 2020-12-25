@@ -7,7 +7,7 @@ class ListAppointments extends Component {
     return (
       <div>
         {appointments.map((item) => (
-          <Appointment appointment={item} key={item.aptId} />
+          <Appointment appointment={item} key={item.aptId} handleDelete={this.props.handleDelete} />
         ))}
       </div>
     );

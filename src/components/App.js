@@ -3,6 +3,7 @@ import '../css/App.css';
 import AddAppointments from './AddAppointments';
 import ListAppointments from './ListAppointments';
 import SearchAppointments from './SearchAppointments';
+import { without } from 'lodash';
 
 class App extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class App extends Component {
     this.state = {
       appointments: [],
       lastIndex: 0,
+      formDisplay: false,
     };
   }
 
@@ -27,6 +29,28 @@ class App extends Component {
       });
   }
 
+  toggleForm = () => {
+    const currentValue = this.state.formDisplay;
+    this.setState({
+      formDisplay: !currentValue,
+    });
+  };
+
+  addApt = (apt) => {
+    const temp = [...this.state.appointments];
+    apt.aptId = this.state.lastIndex + 1;
+    temp.unshift(apt);
+    this.setState({
+      appointments: temp,
+      lastIndex: apt.aptId,
+    });
+  };
+
+  deleteApt = (apt) => {
+    const temp = without(this.state.appointments, apt);
+    this.setState({ appointments: temp });
+  };
+
   render() {
     return (
       <main className="page bg-white" id="petratings">
@@ -34,9 +58,13 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12 bg-white">
               <div className="container">
-                <AddAppointments />
+                <AddAppointments
+                  formDisplay={this.state.formDisplay}
+                  handleToggle={this.toggleForm}
+                  addApt={this.addApt}
+                />
                 <SearchAppointments />
-                <ListAppointments appointments={this.state.appointments} />
+                <ListAppointments appointments={this.state.appointments} handleDelete={this.deleteApt} />
               </div>
             </div>
           </div>

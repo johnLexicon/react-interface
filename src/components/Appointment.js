@@ -8,7 +8,12 @@ class Appointment extends Component {
       <div className="appointment-list item-list mb-3">
         <div className="pet-item col media py-3">
           <div className="mr-3">
-            <button className="pet-delete btn btn-sm btn-danger">
+            <button
+              onClick={() => {
+                this.props.handleDelete(appointment);
+              }}
+              className="pet-delete btn btn-sm btn-danger"
+            >
               <FaTimes />
             </button>
           </div>
