@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
-import Appointment from './Appointment';
+import React, { Component } from 'react'
+import Appointment from './Appointment'
 
 class ListAppointments extends Component {
   render() {
-    const { appointments } = this.props;
+    const { appointments, updateInfo } = this.props
     return (
       <div>
         {appointments.map((item) => (
-          <Appointment appointment={item} key={item.aptId} handleDelete={this.props.handleDelete} />
+          <Appointment
+            appointment={item}
+            key={item.aptId}
+            updateInfo={updateInfo}
+            handleDelete={this.props.handleDelete}
+          />
         ))}
       </div>
-    );
+    )
   }
 }
 
-export default ListAppointments;
+export default ListAppointments

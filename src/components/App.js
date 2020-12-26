@@ -83,6 +83,15 @@ class App extends Component {
     )
   }
 
+  updateInfo = (id, name, value) => {
+    const tempList = [...this.state.appointments]
+    const appointment = tempList.find((apt) => apt.aptId === id)
+    if (appointment) {
+      appointment[name] = value
+      this.setState({ appointments: tempList })
+    }
+  }
+
   render() {
     const { orderBy, orderDir, queryText } = this.state
     let aptsList = [...this.state.appointments]
@@ -107,7 +116,11 @@ class App extends Component {
                   changeOrder={this.changeOrder}
                   searchApts={this.searchApts}
                 />
-                <ListAppointments appointments={filteredApts} handleDelete={this.deleteApt} />
+                <ListAppointments
+                  appointments={filteredApts}
+                  updateInfo={this.updateInfo}
+                  handleDelete={this.deleteApt}
+                />
               </div>
             </div>
           </div>
