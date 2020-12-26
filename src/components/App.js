@@ -13,7 +13,7 @@ class App extends Component {
       lastIndex: 0,
       formDisplay: false,
       orderBy: 'petName',
-      orderDir: 'desc',
+      orderDir: 'asc',
     };
   }
 
@@ -77,7 +77,7 @@ class App extends Component {
                   handleToggle={this.toggleForm}
                   addApt={this.addApt}
                 />
-                <SearchAppointments />
+                <SearchAppointments orderDir={orderDir} orderBy={orderBy} />
                 <ListAppointments appointments={filteredApts} handleDelete={this.deleteApt} />
               </div>
             </div>
