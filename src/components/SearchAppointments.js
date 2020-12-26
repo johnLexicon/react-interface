@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SearchAppointments extends Component {
   render() {
-    const { orderBy, orderDir, changeOrderBy } = this.props;
+    const { orderBy, orderDir, changeOrder } = this.props;
     const dropdownBtnCls = 'sort-by dropdown-item ';
     return (
       <div className="search-appointments row justify-content-center my-4">
@@ -23,7 +23,7 @@ class SearchAppointments extends Component {
               <div className="sort-menu dropdown-menu dropdown-menu-right">
                 <button
                   onClick={() => {
-                    changeOrderBy('petName');
+                    changeOrder('petName', orderDir);
                   }}
                   className={dropdownBtnCls + (orderBy === 'petName' ? 'active' : '')}
                   href="#"
@@ -32,7 +32,7 @@ class SearchAppointments extends Component {
                 </button>
                 <button
                   onClick={() => {
-                    changeOrderBy('aptDate');
+                    changeOrder('aptDate', orderDir);
                   }}
                   className={dropdownBtnCls + (orderBy === 'aptDate' ? 'active' : '')}
                   href="#"
@@ -41,7 +41,7 @@ class SearchAppointments extends Component {
                 </button>
                 <button
                   onClick={() => {
-                    changeOrderBy('ownerName');
+                    changeOrder('ownerName', orderDir);
                   }}
                   className={dropdownBtnCls + (orderBy === 'ownerName' ? 'active' : '')}
                   href="#"
@@ -49,10 +49,18 @@ class SearchAppointments extends Component {
                   Owner
                 </button>
                 <div role="separator" className="dropdown-divider" />
-                <button className={dropdownBtnCls + (orderDir === 'asc' ? 'active' : '')} href="#">
+                <button
+                  onClick={() => changeOrder(orderBy, 'asc')}
+                  className={dropdownBtnCls + (orderDir === 'asc' ? 'active' : '')}
+                  href="#"
+                >
                   Asc
                 </button>
-                <button className={dropdownBtnCls + (orderDir === 'desc' ? 'active' : '')} href="#">
+                <button
+                  onClick={() => changeOrder(orderBy, 'desc')}
+                  className={dropdownBtnCls + (orderDir === 'desc' ? 'active' : '')}
+                  href="#"
+                >
                   Desc
                 </button>
               </div>
