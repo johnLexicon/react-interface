@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SearchAppointments extends Component {
   render() {
-    const { orderBy, orderDir } = this.props;
+    const { orderBy, orderDir, changeOrderBy } = this.props;
     const dropdownBtnCls = 'sort-by dropdown-item ';
     return (
       <div className="search-appointments row justify-content-center my-4">
@@ -21,13 +21,31 @@ class SearchAppointments extends Component {
               </button>
 
               <div className="sort-menu dropdown-menu dropdown-menu-right">
-                <button className={dropdownBtnCls + (orderBy === 'petName' ? 'active' : '')} href="#">
+                <button
+                  onClick={() => {
+                    changeOrderBy('petName');
+                  }}
+                  className={dropdownBtnCls + (orderBy === 'petName' ? 'active' : '')}
+                  href="#"
+                >
                   Pet Name
                 </button>
-                <button className={dropdownBtnCls + (orderBy === 'aptDate' ? 'active' : '')} href="#">
+                <button
+                  onClick={() => {
+                    changeOrderBy('aptDate');
+                  }}
+                  className={dropdownBtnCls + (orderBy === 'aptDate' ? 'active' : '')}
+                  href="#"
+                >
                   Date
                 </button>
-                <button className={dropdownBtnCls + (orderBy === 'ownerName' ? 'active' : '')} href="#">
+                <button
+                  onClick={() => {
+                    changeOrderBy('ownerName');
+                  }}
+                  className={dropdownBtnCls + (orderBy === 'ownerName' ? 'active' : '')}
+                  href="#"
+                >
                   Owner
                 </button>
                 <div role="separator" className="dropdown-divider" />

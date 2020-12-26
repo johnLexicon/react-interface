@@ -53,6 +53,10 @@ class App extends Component {
     this.setState({ appointments: temp });
   };
 
+  changeOrderBy = (orderBy) => {
+    this.setState({ orderBy });
+  };
+
   render() {
     let order;
     const { orderBy, orderDir } = this.state;
@@ -77,7 +81,7 @@ class App extends Component {
                   handleToggle={this.toggleForm}
                   addApt={this.addApt}
                 />
-                <SearchAppointments orderDir={orderDir} orderBy={orderBy} />
+                <SearchAppointments orderDir={orderDir} orderBy={orderBy} changeOrderBy={this.changeOrderBy} />
                 <ListAppointments appointments={filteredApts} handleDelete={this.deleteApt} />
               </div>
             </div>
