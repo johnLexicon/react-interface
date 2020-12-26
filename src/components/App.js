@@ -58,6 +58,10 @@ class App extends Component {
     this.setState({ orderBy, orderDir })
   }
 
+  searchApts = (queryText) => {
+    this.setState({ queryText })
+  }
+
   sortApts = (aptsToSort, orderBy, orderDir) => {
     let order
     if (orderDir === 'asc') order = 1
@@ -97,7 +101,12 @@ class App extends Component {
                   handleToggle={this.toggleForm}
                   addApt={this.addApt}
                 />
-                <SearchAppointments orderDir={orderDir} orderBy={orderBy} changeOrder={this.changeOrder} />
+                <SearchAppointments
+                  orderDir={orderDir}
+                  orderBy={orderBy}
+                  changeOrder={this.changeOrder}
+                  searchApts={this.searchApts}
+                />
                 <ListAppointments appointments={filteredApts} handleDelete={this.deleteApt} />
               </div>
             </div>

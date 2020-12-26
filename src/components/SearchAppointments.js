@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class SearchAppointments extends Component {
   render() {
-    const { orderBy, orderDir, changeOrder } = this.props;
-    const dropdownBtnCls = 'sort-by dropdown-item ';
+    const { orderBy, orderDir, changeOrder, searchApts } = this.props
+    const dropdownBtnCls = 'sort-by dropdown-item '
     return (
       <div className="search-appointments row justify-content-center my-4">
         <div className="col-md-6">
           <div className="input-group">
-            <input id="SearchApts" type="text" className="form-control" aria-label="Search Appointments" />
+            <input
+              onChange={(e) => searchApts(e.target.value)}
+              id="SearchApts"
+              type="text"
+              className="form-control"
+              aria-label="Search Appointments"
+            />
             <div className="input-group-append">
               <button
                 type="button"
@@ -23,7 +29,7 @@ class SearchAppointments extends Component {
               <div className="sort-menu dropdown-menu dropdown-menu-right">
                 <button
                   onClick={() => {
-                    changeOrder('petName', orderDir);
+                    changeOrder('petName', orderDir)
                   }}
                   className={dropdownBtnCls + (orderBy === 'petName' ? 'active' : '')}
                   href="#"
@@ -32,7 +38,7 @@ class SearchAppointments extends Component {
                 </button>
                 <button
                   onClick={() => {
-                    changeOrder('aptDate', orderDir);
+                    changeOrder('aptDate', orderDir)
                   }}
                   className={dropdownBtnCls + (orderBy === 'aptDate' ? 'active' : '')}
                   href="#"
@@ -41,7 +47,7 @@ class SearchAppointments extends Component {
                 </button>
                 <button
                   onClick={() => {
-                    changeOrder('ownerName', orderDir);
+                    changeOrder('ownerName', orderDir)
                   }}
                   className={dropdownBtnCls + (orderBy === 'ownerName' ? 'active' : '')}
                   href="#"
@@ -68,8 +74,8 @@ class SearchAppointments extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default SearchAppointments;
+export default SearchAppointments
